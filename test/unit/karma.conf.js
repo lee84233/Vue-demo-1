@@ -3,6 +3,8 @@
 // we are also using it with karma-webpack
 //   https://github.com/webpack/karma-webpack
 
+var babelPolyfill = require('babel-polyfill/dist/polyfill.min.js')
+
 var webpackConfig = require('../../build/webpack.test.conf')
 
 module.exports = function karmaConfig (config) {
@@ -14,7 +16,7 @@ module.exports = function karmaConfig (config) {
     browsers: ['PhantomJS'],
     frameworks: ['mocha', 'sinon-chai', 'phantomjs-shim'],
     reporters: ['spec', 'coverage'],
-    files: ['./index.js'],
+    files: [babelPolyfill, './index.js'],
     preprocessors: {
       './index.js': ['webpack', 'sourcemap']
     },

@@ -1,0 +1,15 @@
+{
+  "short_name": "家谱",
+  "name": "我家菜谱",
+  "icons": [
+    {
+      "src": "/static/APP.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    }
+  ],
+  "background_color": "#2196f3",
+  "theme_color": "red",
+  "display": "standalone",
+  "start_url": "/"
+}
