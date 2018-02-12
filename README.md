@@ -64,22 +64,42 @@ import cookies from 'js-cookie'
 ## 7. http请求 `axios` 的封装
 1. 创建一个 `axios` 实例，定义实例 `baseUrl`、`timeout`、`Content-Type` 和 响应拦截器进行错误的捕获和处理。
 实例文件路径：`/src/assets/utils/axios.js`
+
 ### 7.1 使用
+
+1. 定义接口
 ```javascript
 // api.js文件内容
 import axiosFactory from '../../assets/utils/axios'
 export default {
   // 基础路径
   BASEURL: axiosFactory.BASEURL,
-  // 获取炒菜列表
+  // post请求
   getChao (params) {
     return axiosFactory.post('food.php', params)
   },
-  // 获取炒菜列表
+  // get请求
   getChao2 (params) {
     return axiosFactory.get('food.php', params)
   }
 }
 ```
 
-## 8. 未完待续...
+2. 导入并使用已定义的接口
+
+```javascript
+import api from './api'
+
+api.getChao({
+  type: 'chao'
+}).then(response => {
+  // 成功回调
+  console.log(response)
+}).catch(error => {
+  // 错误处理
+  console.dir(error)
+})
+
+```
+
+## 8. 国际化

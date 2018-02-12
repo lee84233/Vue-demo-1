@@ -5,7 +5,9 @@
       <div class="weui-cell">
         <div class="weui-cell__hd" style="position: relative;margin-right: 10px;">
           <img src="../../assets/images/head.jpg" style="width: 50px;display: block">
-          <span class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">8</span>
+          <template v-if="FoodNum">
+            <span class="weui-badge" style="position: absolute;top: -.4em;right: -.4em;">{{FoodNum}}</span>
+          </template>
         </div>
         <div class="weui-cell__bd">
           <p>李小城</p>
@@ -58,6 +60,7 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 export default {
   name: 'index',
   data () {
@@ -72,7 +75,10 @@ export default {
   computed: {
     i18n () {
       return this.$i18n.locale
-    }
+    },
+    ...mapGetters([
+      'FoodNum'
+    ])
   },
   methods: {
     // 语言弹窗
