@@ -103,3 +103,4 @@ api.getChao({
 ```
 
 ## 8. 国际化
+1. vue-i18n：vue国际化插件。[Github](https://github.com/kazupon/vue-i18n)
