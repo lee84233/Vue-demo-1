@@ -104,3 +104,6 @@ api.getChao({
 
 ## 8. 国际化
 1. vue-i18n：vue国际化插件。[Github](https://github.com/kazupon/vue-i18n)
+
+## 9. 代理-解决接口跨域问题
+未完待续...
