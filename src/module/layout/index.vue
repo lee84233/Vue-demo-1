@@ -42,7 +42,7 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import homeImg from '../../assets/images/icon_tabbar.png'
+import homeImg from '@/assets/images/icon_tabbar.png'
 export default {
   name: 'index',
   data () {

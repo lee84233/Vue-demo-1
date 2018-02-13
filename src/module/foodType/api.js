@@ -1,4 +1,4 @@
-import axiosFactory from '../../assets/utils/axios'
+import axiosFactory from '@/assets/utils/axios'
 
 export default {
   // 基础路径

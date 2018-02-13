@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view/>
+    <transition>
+      <router-view/>
+    </transition>
   </div>
 </template>
 
@@ -9,7 +11,3 @@ export default {
   name: 'app'
 }
 </script>
-
-<style>
-/* App.vue */
-</style>
