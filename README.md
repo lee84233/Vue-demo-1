@@ -58,8 +58,8 @@ import cookies from 'js-cookie'
 ## 6. `vuex` 的配置
 1. 路径 `/src/store/*.js`
 2. 基础使用，详见 [官方文档](https://vuex.vuejs.org/zh-cn/)
-3. `store` 不提供缓存机制，页面重载（页面刷新、页面重新打开）会重置，封装了 `vuex-persist` 对 `vuex` 提供缓存机制。
-4. [官方文档](https://vuex.vuejs.org/zh-cn/)、[vuex-persist GitHub](https://github.com/championswimmer/vuex-persist)
+3. `store` 不提供缓存机制，页面重载（页面刷新、页面重新打开）会重置，封装了 `vuex-persistedstate` 对 `vuex` 提供缓存机制。
+4. [官方文档](https://vuex.vuejs.org/zh-cn/)、[vuex-persistedstate GitHub](https://github.com/robinvdvleuten/vuex-persistedstate)
 
 ## 7. http请求 `axios` 的封装
 1. 创建一个 `axios` 实例，定义实例 `baseUrl`、`timeout`、`Content-Type` 和 响应拦截器进行错误的捕获和处理。

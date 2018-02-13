@@ -94,7 +94,7 @@ export default {
     },
     // 退出登录
     logout () {
-      this.$store.commit('setToken', false)
+      this.$store.commit('setToken', '')
       this.$router.push({path: '/'})
     }
   }

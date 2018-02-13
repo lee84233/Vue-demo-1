@@ -25,7 +25,7 @@
             <h2 class="weui-msg__title">尚未点餐</h2>
             <p class="weui-msg__desc">
               您还未点餐，
-              <router-link to="/">去点餐</router-link>
+              <router-link to="/home">去点餐</router-link>
             </p>
         </div>
     </div>
@@ -35,9 +35,6 @@
 <script>
 export default {
   name: 'order',
-  created () {
-    this.$store.commit('setToken', 'f1354226df5b3d9505ed246ec8ef234468da99e2')
-  },
   data () {
     return {
     }

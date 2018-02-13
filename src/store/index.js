@@ -1,44 +1,50 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import VuexPersistence from 'vuex-persist'
+import createPersistedState from 'vuex-persistedstate'
 // cookie 操作
-// import Cookies from 'js-cookie'
+import * as Cookies from 'js-cookie'
 
 // 如果在模块化构建系统中，请确保在开头调用了 Vue.use(Vuex)
 Vue.use(Vuex)
 
 // 定义已点菜单的 Vuex
-const orderFoodVuex = new VuexPersistence({
-  key: 'myMenuStore',
-  storage: window.sessionStorage,
-  reducer: (key) => {
-    return {
-      token: key.token,
-      orderFoods: key.orderFoods
-    }
-  }
-})
+// const orderFoodVuex = createPersistedState({
+//   key: 'myMenuStore',
+//   storage: window.localStorage,
+//   // storage: window.sessionStorage,
+//   reducer: (key) => ({
+//     token: key.token,
+//     orderFoods: key.orderFoods
+//   })
+// })
 
 // cookie 存储store
-/* const orderFoodVuex = new VuexPersistence({
+const orderFoodVuex = createPersistedState({
   key: 'myMenuStore',
+  storage: {
+    getItem: key => Cookies.get(key),
+    setItem: (key, value) => Cookies.set(key, value),
+    removeItem: key => Cookies.remove(key)
+  },
   // 恢复存储
-  restoreState: (key, storage) => {
+  getState: (key) => {
     return Cookies.getJSON(key)
   },
-  // 持久性保存状态
-  saveState: (key, state, storage) => {
-    Cookies.set(key, state)
+  // 设置存储
+  setState: (key, value) => {
+    Cookies.set(key, value)
   },
+  // 要存储的state，默认全部
   reducer: key => ({
+    token: key.token,
     orderFoods: key.orderFoods
   })
-}) */
+})
 
 export default new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
   state: {
-    token: 'f1354226df5b3d9505ed246ec8ef234468da99e2',
+    token: '',
     orderFoods: [],
     result: {
       status: false,
@@ -76,5 +82,5 @@ export default new Vuex.Store({
       state.token = token
     }
   },
-  plugins: [orderFoodVuex.plugin]
+  plugins: [orderFoodVuex]
 })

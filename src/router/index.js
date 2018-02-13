@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+// 用户相关页面
+import user from './user'
 // home
 import home from './home'
 // 已点菜单页面
@@ -15,6 +17,7 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   routes: [
+    ...user,
     ...home,
     ...order,
     ...person,

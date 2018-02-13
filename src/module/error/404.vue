@@ -7,7 +7,8 @@
     </div>
     <div class="weui-msg__opr-area">
       <p class="weui-btn-area">
-        <router-link to="/home" class="weui-btn weui-btn_primary">返回首页</router-link>
+        <router-link to="/login" class="weui-btn weui-btn_primary">去登录</router-link>
+        <router-link to="/home" class="weui-btn weui-btn_default">返回首页</router-link>
       </p>
     </div>
     <div class="weui-msg__extra-area">

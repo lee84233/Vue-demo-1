@@ -1,9 +1,5 @@
 export default [
   {
-    path: '/',
-    redirect: '/home'
-  },
-  {
     path: '/home',
     component: resolve => require(['@/module/layout/index'], resolve),
     children: [
