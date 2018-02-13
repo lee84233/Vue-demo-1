@@ -5,6 +5,9 @@
 ## Build Setup
 
 ``` bash
+# use git,clone repository
+git clone https://github.com/lee84233/vue-demo
+
 # install dependencies
 npm install
 

@@ -3,11 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 // router
-import router from './router/'
+import router from './router/index'
 // Vue
-import store from './store/'
+import store from './store/index'
 // i18n
-import i18n from './lang/'
+import i18n from './lang/index'
 
 Vue.config.productionTip = false
 

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import qs from 'qs'
+import store from '@/store/index'
 
 /**
  * 基本参数
@@ -7,7 +8,7 @@ import qs from 'qs'
 // const BASEURL = 'http://localhost:81/interface/'
 const BASEURL = '/interface/'
 
-// 自定义实例
+// 自定义 axios 实例
 const AXIOS_INSTANCE = axios.create({
   baseURL: BASEURL,
   timeout: 10000,
@@ -16,12 +17,23 @@ const AXIOS_INSTANCE = axios.create({
   }
 })
 
+// 请求拦截器
+AXIOS_INSTANCE.interceptors.request.use(
+  (config) => {
+    // 在发送请求之前处理
+    if (store.state.token) {
+      config.headers.Authorization = store.state.token
+    }
+    return config
+  },
+  // 对请求错误处理
+  (error) => Promise.reject(error)
+)
+
 // 响应拦截器
 AXIOS_INSTANCE.interceptors.response.use(
-  (response) => {
-    // 对响应数据处理
-    return response
-  },
+  // 对响应数据处理
+  (response) => response,
   (error) => {
     // 对响应错误处理
     if (error.message.includes('timeout')) {
@@ -132,7 +144,7 @@ export default {
     })
   },
   // 返回一个Promise(发送 delete 请求)
-  deletes (url, params) {
+  del (url, params) {
     return new Promise((resolve, reject) => {
       AXIOS_INSTANCE.delete(url, {
         params: params
