@@ -7,10 +7,13 @@ import router from './router/index'
 // Vue
 import store from './store/index'
 // i18n
-import i18n from './lang/index'
+import i18n from '@/assets/lang/index'
+// 表单验证
+import '@/assets/utils/validation'
 
 Vue.config.productionTip = false
 
+// 路由导航守卫
 router.beforeEach((to, from, next) => {
   // 设置页面 title
   if (to.meta.title) {

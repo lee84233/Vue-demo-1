@@ -88,6 +88,7 @@ export default {
     // 切换语言
     switchLanguage (val) {
       if (this.i18n !== val) {
+        this.$store.commit('setLang', val)
         this.$i18n.locale = val
       }
       this.layerLanguage(false)

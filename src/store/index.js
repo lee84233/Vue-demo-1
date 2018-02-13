@@ -14,7 +14,7 @@ const orderFoodVuex = createPersistedState({
   storage: window.sessionStorage,
   reducer: (key) => ({
     token: key.token,
-    i18n: key.i18n,
+    lang: key.lang,
     orderFoods: key.orderFoods
   })
 })
@@ -38,7 +38,7 @@ const orderFoodVuex = createPersistedState({
 //   // 要存储的state，默认全部
 //   reducer: key => ({
 //     token: key.token,
-//     i18n: key.i18n,
+//     lang: key.lang,
 //     orderFoods: key.orderFoods
 //   })
 // })
@@ -53,7 +53,7 @@ export default new Vuex.Store({
       msg: ''
     },
     // 语言
-    i18n: 'zh'
+    lang: 'zh'
   },
   getters: {
     FoodNum: state => {
@@ -84,6 +84,9 @@ export default new Vuex.Store({
     },
     setToken (state, token) {
       state.token = token
+    },
+    setLang (state, lang) {
+      state.lang = lang
     }
   },
   plugins: [orderFoodVuex]
