@@ -63,6 +63,10 @@ AXIOS_INSTANCE.interceptors.response.use(
           error.message = '请求超时'
           break
 
+        case 413:
+          error.message = '解析失败'
+          break
+
         case 500:
           error.message = '服务器内部错误'
           break

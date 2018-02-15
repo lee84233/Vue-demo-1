@@ -13,7 +13,7 @@ module.exports = {
     // 代理
     proxyTable: {
       '/interface': {
-        target: 'http://localhost:81',
+        target: 'http://localhost:80',
         changeOrigin: true,
         pathRewrite: {
           // '^/interface': '/interface'

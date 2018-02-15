@@ -3,6 +3,6 @@
  * github: https://github.com/baianat/vee-validate
  */
 import Vue from 'vue'
-import VeeValidate from 'vee-validate'
+import Vuelidate from 'vuelidate'
 
-Vue.use(VeeValidate)
+Vue.use(Vuelidate)

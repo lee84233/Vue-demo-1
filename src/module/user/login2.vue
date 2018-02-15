@@ -1,25 +1,26 @@
 <template>
   <div class="login-page">
     <div class="weui-cells weui-cells_form">
-      <div class="weui-cell" :class="{'weui-cell_warn': $v.form.phone.$error}">
+      <div class="weui-cell" :class="{'weui-cell_warn': errors.has('phone')}">
         <div class="weui-cell__hd"><label class="weui-label">手机号</label></div>
         <div class="weui-cell__bd">
-          <input class="weui-input" type="number" name="phone" placeholder="请输入手机号" v-model.trim="form.phone" @blur="$v.form.phone.$touch()">
+          <input class="weui-input" type="number" name="phone" placeholder="请输入手机号" v-model="phone" v-validate="{required:true,regex:/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/}">
         </div>
         <div class="weui-cell__ft">
           <i class="weui-icon-warn"></i>
         </div>
       </div>
-      <div class="weui-cell" :class="{'weui-cell_warn': $v.form.psw.$error}">
+      <div class="weui-cell" :class="{'weui-cell_warn': errors.has('psw')}">
         <div class="weui-cell__hd"><label class="weui-label">密码</label></div>
         <div class="weui-cell__bd">
-          <input class="weui-input" name="psw" type="password" placeholder="随意输入密码" v-model.trim="form.psw" @blur="$v.form.psw.$touch()">
+          <input class="weui-input" name="psw" type="password" placeholder="随意输入密码" v-model="psw" v-validate="{required:true}">
         </div>
         <div class="weui-cell__ft">
           <i class="weui-icon-warn"></i>
         </div>
       </div>
     </div>
+    <p class="weui-cells__tips" v-show="errors.any()">{{ errors.all()[0] }}</p>
     <!-- 登录 -->
     <div class="weui-btn-area">
       <a class="weui-btn weui-btn_primary" href="javascript:" @click="login">登 录</a>
@@ -37,7 +38,6 @@
 </template>
 
 <script>
-import {required, minLength} from 'vuelidate/lib/validators'
 import common from '@/assets/utils/common'
 export default {
   name: 'login',
@@ -46,31 +46,30 @@ export default {
   },
   data () {
     return {
-      form: {
-        phone: '',
-        psw: ''
-      }
+      phone: null,
+      phoneClick: false,
+      psw: '',
+      pswClick: false
     }
   },
-  validations: {
-    form: {
-      phone: {
-        required,
-        minLength: minLength(11),
-        isPhone: (val) => common.isPhone(val)
-      },
-      psw: {
-        required
+  computed: {
+    is_phone () {
+      if (!this.phoneClick) {
+        return true
       }
+      return common.is_phone(this.phone)
+    },
+    is_psw () {
+      if (!this.pswClick) {
+        return true
+      }
+      return this.psw ? true : false// eslint-disable-line
     }
   },
   methods: {
     login () {
-      this.$v.form.$touch()
-      if (!this.$v.form.$error) {
-        this.$router.push('/home')
-        this.$store.commit('setToken', 'f1354226df5b3d9505ed246ec8ef234468da99e2')
-      }
+      this.$router.push('/home')
+      this.$store.commit('setToken', 'f1354226df5b3d9505ed246ec8ef234468da99e2')
     }
   },
   destroyed () {
