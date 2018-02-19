@@ -12,8 +12,8 @@ module.exports = {
     assetsPublicPath: '/',
     // 代理
     proxyTable: {
-      '/interface': {
-        target: 'http://localhost:80',
+      '/api': {
+        target: 'http://localhost:8000',
         changeOrigin: true,
         pathRewrite: {
           // '^/interface': '/interface'

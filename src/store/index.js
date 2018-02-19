@@ -86,7 +86,10 @@ export default new Vuex.Store({
       state.token = token
     },
     setLang (state, lang) {
-      state.lang = lang
+      if (state.lang !== lang) {
+        // this.$i18n.locale = lang
+        state.lang = lang
+      }
     }
   },
   plugins: [orderFoodVuex]

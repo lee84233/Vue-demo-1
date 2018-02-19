@@ -1,6 +1,6 @@
 <template>
   <div class="chao-page">
-    <div class="weui-panel weui-panel_access">
+    <div class="weui-panel weui-panel_access" v-if="foodLists.length">
       <!-- <div class="weui-panel__hd">图文组合列表</div> -->
       <div class="weui-panel__bd">
         <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg" v-for="(food,index) in foodLists" @click="addFood(index)" :key="food.id">
@@ -19,6 +19,15 @@
         </a>
       </div>
     </div>
+    <div class="weui-msg" v-else>
+        <div class="weui-msg__icon-area"><i class="weui-icon-info weui-icon_msg"></i></div>
+        <div class="weui-msg__text-area">
+            <h2 class="weui-msg__title">暂无菜单</h2>
+            <p class="weui-msg__desc">
+              即将开放，敬请期待！
+            </p>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -29,13 +38,11 @@ export default {
   created () {
     // this.foodLists = datas.foodLists
     api.getChao({
-      type: '炖菜'
+      type: 'dun'
     }).then(result => {
       // console.log(result)
       this.foodLists = result.data.list
     })
-  },
-  mounted () {
   },
   data () {
     return {

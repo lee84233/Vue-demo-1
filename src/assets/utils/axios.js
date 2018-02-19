@@ -6,7 +6,7 @@ import store from '@/store/index'
  * 基本参数
  */
 // const BASEURL = 'http://localhost:81/interface/'
-const BASEURL = '/interface/'
+const BASEURL = '/api/'
 
 // 自定义 axios 实例
 const AXIOS_INSTANCE = axios.create({
@@ -48,7 +48,7 @@ AXIOS_INSTANCE.interceptors.response.use(
           break
 
         case 401:
-          error.message = '未授权，请登录'
+          error.message = '未登录或登录超时，请重新登录'
           break
 
         case 403:

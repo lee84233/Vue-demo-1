@@ -60,6 +60,7 @@
 </template>
 
 <script>
+import api from './api'
 import {mapGetters} from 'vuex'
 export default {
   name: 'index',
@@ -88,8 +89,18 @@ export default {
     // 切换语言
     switchLanguage (val) {
       if (this.i18n !== val) {
-        this.$store.commit('setLang', val)
-        this.$i18n.locale = val
+        api.switchLanguage({
+          lang: val
+        }).then(response => {
+          console.log(response)
+          if (response.state === 200) {
+            this.$store.commit('setLang', val)
+            this.$i18n.locale = val
+            layer.msg('更改成功') // eslint-disable-line
+          } else {
+            layer.msg(response.msg) // eslint-disable-line
+          }
+        })
       }
       this.layerLanguage(false)
     },

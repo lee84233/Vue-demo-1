@@ -23,6 +23,7 @@
     <!-- 登录 -->
     <div class="weui-btn-area">
       <a class="weui-btn weui-btn_primary" href="javascript:" @click="login">登 录</a>
+      <a class="weui-btn weui-btn_primary" href="javascript:" @click="register">注 册</a>
     </div>
     <!-- 页脚 -->
     <div class="weui-msg__extra-area">
@@ -39,6 +40,7 @@
 <script>
 import {required, minLength} from 'vuelidate/lib/validators'
 import common from '@/assets/utils/common'
+import api from './api'
 export default {
   name: 'login',
   mounted () {
@@ -60,7 +62,8 @@ export default {
         isPhone: (val) => common.isPhone(val)
       },
       psw: {
-        required
+        required,
+        minLength: minLength(6)
       }
     }
   },
@@ -68,8 +71,38 @@ export default {
     login () {
       this.$v.form.$touch()
       if (!this.$v.form.$error) {
-        this.$router.push('/home')
-        this.$store.commit('setToken', 'f1354226df5b3d9505ed246ec8ef234468da99e2')
+        api.login({
+          phone: this.form.phone,
+          password: this.form.psw
+        }).then(response => {
+          /* eslint-disable */
+          if (response.state === 200){
+            this.$store.commit('setToken', response.data.token)
+            // if (this.$store.state.lang !== response.data.language) {
+            //   this.$18n.locale = response.data.language
+            //   this.$store.commit('setLang', response.data.language)
+            // }
+            this.$router.push('/home')
+          } else {
+            layer.msg(response.msg)
+          }
+        })
+      }
+    },
+    register () {
+      this.$v.form.$touch()
+      if (!this.$v.form.$error) {
+        api.register({
+          phone: this.form.phone,
+          password: this.form.psw
+        }).then(response => {
+          /* eslint-disable */
+          if (response.state === 200){
+            layer.msg('注册成功')
+          } else {
+            layer.msg(response.msg)
+          }
+        })
       }
     }
   },
