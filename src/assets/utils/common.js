@@ -1,4 +1,4 @@
-module.exports = {
+exports default {
   /**
    * 验证是否为手机号
    * @param  {number}  num 要验证手机号
