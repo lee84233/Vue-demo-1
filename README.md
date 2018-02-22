@@ -1,6 +1,12 @@
+# 在此处输入标题
+
+标签（空格分隔）： 未分类
+
+---
+
 # vue2.0 框架整理
 
-> 点菜的demo工程，对 vue2 框架进行丰富和完善 :persevere:
+> 实现一个简单点菜demo，来对 vue2 框架进行丰富和完善 :persevere:
 
 ## Build Setup
 
@@ -110,3 +116,8 @@ api.getChao({
 
 ## 9. 代理-解决接口跨域问题
 未完待续...
+
+## 10. 后台数据
+
+1. 后台使用 `egg.js` js框架，代码详见github。[egg-demo](https://github.com/lee84233/egg-demo)
+2. 数据库是 MYSQL。sql文件见 `egg-demo/my-menu.sql`
