@@ -9,7 +9,7 @@ import store from './store/index'
 // i18n
 import i18n from '@/assets/lang/index'
 // 表单验证
-import '@/assets/utils/validation'
+import('@/assets/utils/validation')
 
 Vue.config.productionTip = false
 
