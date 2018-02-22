@@ -78,10 +78,10 @@ export default {
           /* eslint-disable */
           if (response.state === 200){
             this.$store.commit('setToken', response.data.token)
-            // if (this.$store.state.lang !== response.data.language) {
-            //   this.$18n.locale = response.data.language
-            //   this.$store.commit('setLang', response.data.language)
-            // }
+            if (this.$store.state.lang !== response.data.language) {
+              this.$i18n.locale = response.data.language
+              this.$store.commit('setLang', response.data.language)
+            }
             this.$router.push('/home')
           } else {
             layer.msg(response.msg)
