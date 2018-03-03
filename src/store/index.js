@@ -56,13 +56,13 @@ export default new Vuex.Store({
     lang: 'zh'
   },
   getters: {
-    FoodNum: state => {
+    FoodNum: (state) => {
       return state.orderFoods.length
     }
   },
   mutations: {
-    addFood (state, newOrder) {
-      let index = state.orderFoods.findIndex(item => {
+    addFood(state, newOrder) {
+      let index = state.orderFoods.findIndex((item) => {
         return item.id === newOrder.id
       })
       // 存在，已点
@@ -79,13 +79,13 @@ export default new Vuex.Store({
         }
       }
     },
-    delFood (state, index) {
+    delFood(state, index) {
       state.orderFoods.splice(index, 1)
     },
-    setToken (state, token) {
+    setToken(state, token) {
       state.token = token
     },
-    setLang (state, lang) {
+    setLang(state, lang) {
       if (state.lang !== lang) {
         // this.$i18n.locale = lang
         state.lang = lang
