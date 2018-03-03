@@ -36,24 +36,26 @@
 import api from './api'
 export default {
   name: 'chao',
-  created () {
+  created() {
     // this.foodLists = datas.foodLists
   },
-  mounted () {
-    api.getChao({
-      type: 'chao'
-    }).then(result => {
-      // console.log(result)
-      this.foodLists = result.data.list
-    })
+  mounted() {
+    api
+      .getChao({
+        type: 'chao'
+      })
+      .then((result) => {
+        // console.log(result)
+        this.foodLists = result.data.list
+      })
   },
-  data () {
+  data() {
     return {
       foodLists: []
     }
   },
   methods: {
-    addFood (i) {
+    addFood(i) {
       this.$store.commit('addFood', this.foodLists[i])
       let res = this.$store.state.result
       if (res.status) {
@@ -61,7 +63,7 @@ export default {
         layer.msg('添加成功', {
           time: 2000
         })
-      }else{
+      } else {
         layer.msg(res.msg, {
           time: 2000
         })

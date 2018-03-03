@@ -64,7 +64,7 @@ import api from './api'
 import {mapGetters} from 'vuex'
 export default {
   name: 'index',
-  data () {
+  data() {
     return {
       langs: [
         {text: '中文', val: 'zh', id: 0},
@@ -74,38 +74,38 @@ export default {
     }
   },
   computed: {
-    i18n () {
+    i18n() {
       return this.$i18n.locale
     },
-    ...mapGetters([
-      'FoodNum'
-    ])
+    ...mapGetters(['FoodNum'])
   },
   methods: {
     // 语言弹窗
-    layerLanguage (state) {
+    layerLanguage(state) {
       this.layerLanguageShow = state
     },
     // 切换语言
-    switchLanguage (val) {
+    switchLanguage(val) {
       if (this.i18n !== val) {
-        api.switchLanguage({
-          lang: val
-        }).then(response => {
-          console.log(response)
-          if (response.state === 200) {
-            this.$store.commit('setLang', val)
-            this.$i18n.locale = val
-            layer.msg('更改成功') // eslint-disable-line
-          } else {
-            layer.msg(response.msg) // eslint-disable-line
-          }
-        })
+        api
+          .switchLanguage({
+            lang: val
+          })
+          .then(response => {
+            // console.log(response)
+            if (response.state === 200) {
+              this.$store.commit('setLang', val)
+              this.$i18n.locale = val
+              layer.msg('更改成功')
+            } else {
+              layer.msg(response.msg)
+            }
+          })
       }
       this.layerLanguage(false)
     },
     // 退出登录
-    logout () {
+    logout() {
       this.$store.commit('setToken', '')
       this.$router.push({path: '/'})
     }

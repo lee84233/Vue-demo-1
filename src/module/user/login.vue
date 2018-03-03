@@ -43,10 +43,10 @@ import common from '@/assets/utils/common'
 import api from './api'
 export default {
   name: 'login',
-  mounted () {
-    $('body').addClass('bg-grey')// eslint-disable-line
+  mounted() {
+    $('body').addClass('bg-grey') // eslint-disable-line
   },
-  data () {
+  data() {
     return {
       form: {
         phone: '',
@@ -68,46 +68,50 @@ export default {
     }
   },
   methods: {
-    login () {
+    login() {
       this.$v.form.$touch()
       if (!this.$v.form.$error) {
-        api.login({
-          phone: this.form.phone,
-          password: this.form.psw
-        }).then(response => {
-          /* eslint-disable */
-          if (response.state === 200){
-            this.$store.commit('setToken', response.data.token)
-            if (this.$store.state.lang !== response.data.language) {
-              this.$i18n.locale = response.data.language
-              this.$store.commit('setLang', response.data.language)
+        api
+          .login({
+            phone: this.form.phone,
+            password: this.form.psw
+          })
+          .then((response) => {
+            /* eslint-disable */
+            if (response.state === 200) {
+              this.$store.commit('setToken', response.data.token)
+              if (this.$store.state.lang !== response.data.language) {
+                this.$i18n.locale = response.data.language
+                this.$store.commit('setLang', response.data.language)
+              }
+              this.$router.push('/home')
+            } else {
+              layer.msg(response.msg)
             }
-            this.$router.push('/home')
-          } else {
-            layer.msg(response.msg)
-          }
-        })
+          })
       }
     },
-    register () {
+    register() {
       this.$v.form.$touch()
       if (!this.$v.form.$error) {
-        api.register({
-          phone: this.form.phone,
-          password: this.form.psw
-        }).then(response => {
-          /* eslint-disable */
-          if (response.state === 200){
-            layer.msg('注册成功')
-          } else {
-            layer.msg(response.msg)
-          }
-        })
+        api
+          .register({
+            phone: this.form.phone,
+            password: this.form.psw
+          })
+          .then((response) => {
+            /* eslint-disable */
+            if (response.state === 200) {
+              layer.msg('注册成功')
+            } else {
+              layer.msg(response.msg)
+            }
+          })
       }
     }
   },
-  destroyed () {
-    $('body').removeClass('bg-grey')// eslint-disable-line
+  destroyed() {
+    $('body').removeClass('bg-grey') // eslint-disable-line
   }
 }
 </script>

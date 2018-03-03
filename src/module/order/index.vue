@@ -35,23 +35,22 @@
 <script>
 export default {
   name: 'order',
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
   computed: {
-    orderList () {
+    orderList() {
       return this.$store.state.orderFoods
     }
   },
   methods: {
-    delFood (index) {
+    delFood(index) {
       /* eslint-disable */
       layer.open({
         title: '温馨提示',
         content: '确认删除该菜单',
         btn: ['确定', '取消'],
-        yes: i => {
+        yes: (i) => {
           layer.close(i)
           this.$store.commit('delFood', index)
         }

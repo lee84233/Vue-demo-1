@@ -40,12 +40,12 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import {mapGetters} from 'vuex'
 
 import homeImg from '@/assets/images/icon_tabbar.png'
 export default {
   name: 'index',
-  data () {
+  data() {
     return {
       tabLists: [
         {
@@ -71,14 +71,12 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'FoodNum'
-    ])
+    ...mapGetters(['FoodNum'])
   }
 }
 </script>
 
 <style lang="scss">
-@import "../../assets/styles/app";
-@import "../../assets/styles/module";
+@import '../../assets/styles/app';
+@import '../../assets/styles/module';
 </style>
