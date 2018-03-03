@@ -1,7 +1,7 @@
 export default [
   {
     path: '/',
-    component: resolve => require(['@/module/layout/index'], resolve),
+    component: (resolve) => require(['@/module/layout/index'], resolve),
     children: [
       {
         path: 'order',
@@ -10,9 +10,8 @@ export default [
           title: '已点菜单',
           requiresAuth: false
         },
-        component: resolve => require(['@/module/order/index'], resolve)
+        component: (resolve) => require(['@/module/order/index'], resolve)
       }
     ]
   }
-
 ]

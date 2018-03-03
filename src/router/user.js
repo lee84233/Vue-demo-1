@@ -10,6 +10,6 @@ export default [
       title: '登录',
       requiresAuth: false
     },
-    component: resolve => require(['@/module/user/login'], resolve)
+    component: (resolve) => require(['@/module/user/login'], resolve)
   }
 ]

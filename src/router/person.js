@@ -1,7 +1,7 @@
 export default [
   {
     path: '/person',
-    component: resolve => require(['@/module/layout/index'], resolve),
+    component: (resolve) => require(['@/module/layout/index'], resolve),
     children: [
       {
         path: '/',
@@ -14,7 +14,7 @@ export default [
           title: '个人中心',
           requiresAuth: true
         },
-        component: resolve => require(['@/module/person/index'], resolve)
+        component: (resolve) => require(['@/module/person/index'], resolve)
       }
     ]
   }

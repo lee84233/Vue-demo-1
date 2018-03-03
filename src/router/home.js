@@ -1,7 +1,7 @@
 export default [
   {
     path: '/home',
-    component: resolve => require(['@/module/layout/index'], resolve),
+    component: (resolve) => require(['@/module/layout/index'], resolve),
     children: [
       {
         path: '/',
@@ -9,7 +9,7 @@ export default [
       },
       {
         path: 'index',
-        component: resolve => require(['@/module/foodType/index'], resolve),
+        component: (resolve) => require(['@/module/foodType/index'], resolve),
         children: [
           {
             path: '/',
@@ -22,7 +22,7 @@ export default [
               title: '炒菜系列',
               requiresAuth: false
             },
-            component: resolve => require(['@/module/foodType/chao'], resolve)
+            component: (resolve) => require(['@/module/foodType/chao'], resolve)
           },
           {
             path: 'dun',
@@ -31,7 +31,7 @@ export default [
               title: '炖菜系列',
               requiresAuth: false
             },
-            component: resolve => require(['@/module/foodType/dun'], resolve)
+            component: (resolve) => require(['@/module/foodType/dun'], resolve)
           },
           {
             path: 'tang',
@@ -40,7 +40,7 @@ export default [
               title: '汤菜系列',
               requiresAuth: false
             },
-            component: resolve => require(['@/module/foodType/tang'], resolve)
+            component: (resolve) => require(['@/module/foodType/tang'], resolve)
           }
         ]
       }
