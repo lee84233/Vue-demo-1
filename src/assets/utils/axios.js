@@ -1,3 +1,11 @@
+/*
+ * axios 实例封装
+ * @Author: Bruce.Lee
+ * @Date: 2018-03-03 11:25:19
+ * @Last Modified by: Bruce.Lee
+ * @Last Modified time: 2018-03-03 11:26:32
+ */
+
 import axios from 'axios'
 import qs from 'qs'
 import store from '@/store/index'
@@ -104,60 +112,72 @@ export default {
   // 基本路径
   BASEURL,
   // 返回一个Promise(发送 post 请求)
-  post (url, params) {
+  post(url, params) {
     return new Promise((resolve, reject) => {
       AXIOS_INSTANCE.post(url, qs.stringify(params))
-        .then(response => {
-          resolve(response.data)
-        }, error => {
-          reject(error)
-        })
+        .then(
+          (response) => {
+            resolve(response.data)
+          },
+          (error) => {
+            reject(error)
+          }
+        )
         .catch((error) => {
           reject(error)
         })
     })
   },
   // 返回一个Promise(发送 get 请求)
-  get (url, params) {
+  get(url, params) {
     return new Promise((resolve, reject) => {
       AXIOS_INSTANCE.get(url, {
         params: params
       })
-        .then(response => {
-          resolve(response.data)
-        }, error => {
-          reject(error)
-        })
+        .then(
+          (response) => {
+            resolve(response.data)
+          },
+          (error) => {
+            reject(error)
+          }
+        )
         .catch((error) => {
           reject(error)
         })
     })
   },
   // 返回一个Promise(发送 put 请求)
-  put (url, params) {
+  put(url, params) {
     return new Promise((resolve, reject) => {
       AXIOS_INSTANCE.put(url, qs.stringify(params))
-        .then(response => {
-          resolve(response.data)
-        }, error => {
-          reject(error)
-        })
+        .then(
+          (response) => {
+            resolve(response.data)
+          },
+          (error) => {
+            reject(error)
+          }
+        )
         .catch((error) => {
           reject(error)
         })
     })
   },
   // 返回一个Promise(发送 delete 请求)
-  del (url, params) {
+  del(url, params) {
     return new Promise((resolve, reject) => {
       AXIOS_INSTANCE.delete(url, {
         params: params
       })
-        .then(response => {
-          resolve(response.data)
-        }, error => {
-          reject(error)
-        })
+        .then(
+          (response) => {
+            resolve(response.data)
+          },
+          (error) => {
+            reject(error)
+          }
+        )
         .catch((error) => {
           reject(error)
         })
