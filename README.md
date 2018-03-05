@@ -109,7 +109,19 @@ api.getChao({
 1. vue-i18n：vue国际化插件。[Github](https://github.com/kazupon/vue-i18n)
 
 ## 9. 代理-解决接口跨域问题
-未完待续...
+`/config/index.js` 文件中配置代理。
+```javascript
+// 代理
+proxyTable: {
+  '/api': {
+    target: 'http://localhost:8000',
+    changeOrigin: true,
+    pathRewrite: {
+      // '^/api': '/interface'
+    }
+  }
+}
+```
 
 ## 10. 后台数据
 
