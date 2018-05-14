@@ -6,4 +6,4 @@ export default {
   validations: {
     required: '必填'
   }
-}
+};

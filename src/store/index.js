@@ -1,11 +1,11 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import createPersistedState from 'vuex-persistedstate'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import createPersistedState from 'vuex-persistedstate';
 // cookie 操作
 // import Cookies from 'js-cookie'
 
 // 如果在模块化构建系统中，请确保在开头调用了 Vue.use(Vuex)
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 // Storage 存储store
 const orderFoodVuex = createPersistedState({
@@ -17,7 +17,7 @@ const orderFoodVuex = createPersistedState({
     lang: key.lang,
     orderFoods: key.orderFoods
   })
-})
+});
 
 // cookie 存储store
 // const orderFoodVuex = createPersistedState({
@@ -57,40 +57,40 @@ export default new Vuex.Store({
   },
   getters: {
     FoodNum: (state) => {
-      return state.orderFoods.length
+      return state.orderFoods.length;
     }
   },
   mutations: {
     addFood(state, newOrder) {
       let index = state.orderFoods.findIndex((item) => {
-        return item.id === newOrder.id
-      })
+        return item.id === newOrder.id;
+      });
       // 存在，已点
       if (index !== -1) {
         state.result = {
           status: false,
           msg: '已点过该菜品'
-        }
+        };
       } else {
-        state.orderFoods.push(newOrder)
+        state.orderFoods.push(newOrder);
         state.result = {
           status: true,
           msg: '成功'
-        }
+        };
       }
     },
     delFood(state, index) {
-      state.orderFoods.splice(index, 1)
+      state.orderFoods.splice(index, 1);
     },
     setToken(state, token) {
-      state.token = token
+      state.token = token;
     },
     setLang(state, lang) {
       if (state.lang !== lang) {
         // this.$i18n.locale = lang
-        state.lang = lang
+        state.lang = lang;
       }
     }
   },
   plugins: [orderFoodVuex]
-})
+});

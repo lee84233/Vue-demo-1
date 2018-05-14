@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import api from './api'
+import api from './api';
 export default {
   name: 'tang',
   created() {
@@ -43,29 +43,29 @@ export default {
       })
       .then((result) => {
         // console.log(result)
-        this.foodLists = result.data.list
-      })
+        this.foodLists = result.data.list;
+      });
   },
   data() {
     return {
       foodLists: []
-    }
+    };
   },
   methods: {
     addFood(i) {
-      this.$store.commit('addFood', this.foodLists[i])
-      let res = this.$store.state.result
+      this.$store.commit('addFood', this.foodLists[i]);
+      let res = this.$store.state.result;
       if (res.status) {
         /* eslint-disable */
         layer.msg('添加成功', {
           time: 2000
-        })
+        });
       } else {
         layer.msg(res.msg, {
           time: 2000
-        })
+        });
       }
     }
   }
-}
+};
 </script>

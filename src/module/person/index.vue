@@ -60,8 +60,8 @@
 </template>
 
 <script>
-import api from './api'
-import {mapGetters} from 'vuex'
+import api from './api';
+import {mapGetters} from 'vuex';
 export default {
   name: 'index',
   data() {
@@ -71,18 +71,18 @@ export default {
         {text: '英文', val: 'en', id: 1}
       ],
       layerLanguageShow: false
-    }
+    };
   },
   computed: {
     i18n() {
-      return this.$i18n.locale
+      return this.$i18n.locale;
     },
     ...mapGetters(['FoodNum'])
   },
   methods: {
     // 语言弹窗
     layerLanguage(state) {
-      this.layerLanguageShow = state
+      this.layerLanguageShow = state;
     },
     // 切换语言
     switchLanguage(val) {
@@ -91,26 +91,26 @@ export default {
           .switchLanguage({
             lang: val
           })
-          .then(response => {
+          .then((response) => {
             // console.log(response)
             if (response.state === 200) {
-              this.$store.commit('setLang', val)
-              this.$i18n.locale = val
-              layer.msg('更改成功')
+              this.$store.commit('setLang', val);
+              this.$i18n.locale = val;
+              layer.msg('更改成功');
             } else {
-              layer.msg(response.msg)
+              layer.msg(response.msg);
             }
-          })
+          });
       }
-      this.layerLanguage(false)
+      this.layerLanguage(false);
     },
     // 退出登录
     logout() {
-      this.$store.commit('setToken', '')
-      this.$router.push({path: '/'})
+      this.$store.commit('setToken', '');
+      this.$router.push({path: '/'});
     }
   }
-}
+};
 </script>
 
 <style lang="scss">

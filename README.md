@@ -1,6 +1,6 @@
 # vue2.0 框架整理
 
-> 实现一个简单点菜demo，来对 vue2 框架进行丰富和完善 :persevere:
+> 实现一个简单菜谱demo，来对 vue2 框架进行丰富和完善 :persevere:
 
 ## Build Setup
 
@@ -30,8 +30,12 @@ npm run e2e
 npm test
 ```
 
-## 1. 安装 `SASS` 模块
+## 1. 已安装 `SASS`
 
+### 1.1 安装sass
+`npm install --save-dev node-sass sass-loader`
+
+### 1.2 使用
 ```css
 // 组件内加上 lang 属性
 <style lang="scss">
@@ -40,7 +44,7 @@ npm test
 ```
 
 ## 2. 全局安装了 `jQuery`
-难免会用到 `jquery` 或依赖 `jquery的插件`，当然你完全可以删除`jquery`
+难免会用到 `jquery` 或依赖 `jquery的插件`，当然你完全可以移除`jquery`。
 
 ## 3. 全局安装了 `layer`
 layer：十分好用的弹窗插件，官网有详细的API。[官网](http://layer.layui.com/)

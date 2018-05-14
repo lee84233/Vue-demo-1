@@ -12,4 +12,4 @@ export default [
     },
     component: (resolve) => require(['@/module/user/login'], resolve)
   }
-]
+];

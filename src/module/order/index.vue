@@ -36,11 +36,16 @@
 export default {
   name: 'order',
   data() {
-    return {}
+    return {};
+  },
+  watch: {
+    $route() {
+      console.log(1);
+    }
   },
   computed: {
     orderList() {
-      return this.$store.state.orderFoods
+      return this.$store.state.orderFoods;
     }
   },
   methods: {
@@ -51,11 +56,11 @@ export default {
         content: '确认删除该菜单',
         btn: ['确定', '取消'],
         yes: (i) => {
-          layer.close(i)
-          this.$store.commit('delFood', index)
+          layer.close(i);
+          this.$store.commit('delFood', index);
         }
-      })
+      });
     }
   }
-}
+};
 </script>

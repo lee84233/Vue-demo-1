@@ -3,7 +3,9 @@
     <div class="page__bd" style="height: 100%;">
       <div class="weui-tab">
         <!-- main content -->
-        <router-view class="weui-tab__panel"></router-view>
+        <keep-alive>
+          <router-view class="weui-tab__panel"></router-view>
+        </keep-alive>
         <!-- tabbar -->
         <div class="weui-tabbar">
           <router-link class="weui-tabbar__item" v-for="(tab,index) in tabLists" :to="tab.url" active-class="weui-bar__item_on" :key="tab.id">
@@ -40,9 +42,9 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters} from 'vuex';
 
-import homeImg from '@/assets/images/icon_tabbar.png'
+import homeImg from '@/assets/images/icon_tabbar.png';
 export default {
   name: 'index',
   data() {
@@ -68,12 +70,12 @@ export default {
           id: 2
         }
       ]
-    }
+    };
   },
   computed: {
     ...mapGetters(['FoodNum'])
   }
-}
+};
 </script>
 
 <style lang="scss">

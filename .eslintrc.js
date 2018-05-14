@@ -36,7 +36,7 @@ module.exports = {
     // 函数参数不能重复
     'no-dupe-args': 2,
     // 语句强制分号结尾
-    // semi: ['error', 'always'],
+    semi: ['error', 'always'],
     // 禁止使用console
     'no-console': 1,
     // 在函数定义中，括号之前，要执行一致的间距
