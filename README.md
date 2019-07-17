@@ -1,4 +1,4 @@
-# vue2.0 框架整理
+# vue cli 2 框架整理
 
 > 实现一个简单菜谱demo，来对 vue2 框架进行丰富和完善 :persevere:
 
